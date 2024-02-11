@@ -105,8 +105,7 @@ def run():
     ## plot results
     loss_plot(train_dict, val_dict)
         
-        
-        
+                
 if __name__ == '__main__':
     
     run()

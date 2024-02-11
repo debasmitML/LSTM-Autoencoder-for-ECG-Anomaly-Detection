@@ -7,19 +7,12 @@ class timeDistributedDense(nn.Module):
         self.seq_len = seq_len
         self.fc = nn.Linear(64,input_size)
         
-    
     def forward(self,x):
         
         x = torch.cat([ self.fc(x[:,i,:]).unsqueeze(1) for i in range(self.seq_len)],1)
-        
-        
-        
-        
         return x
     
-    
-    
-    
+     
 class lstmAutoEncoder(nn.Module):
     
     def __init__(self , input_size , latent_size , seq_len):
@@ -34,9 +27,6 @@ class lstmAutoEncoder(nn.Module):
         self.seq_len = seq_len
         self.latent_size = latent_size
         
-        
-    
-    
     def forward(self , x):
         
         x,(_,_) = self.lstm1(x)
@@ -50,8 +40,5 @@ class lstmAutoEncoder(nn.Module):
         x,(_,_) = self.lstm4(x)
         x= self.dropout(x)
         x = self.time_fc(x)
-        
-        
-        
         
         return x 
